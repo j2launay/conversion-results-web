@@ -1,22 +1,16 @@
 {
   "name": "conversion-results-web",
   "version": "1.0.0",
-  "description": "A web application to visually represent conversion results including metrics for precision, hallucination, positive, and negative aspects.",
-  "main": "src/index.js",
+  "private": true,
+  "homepage": "https://j2launay.github.io/conversion-results-web",
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
-  "keywords": [
-    "conversion",
-    "results",
-    "metrics",
-    "react"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -25,10 +19,9 @@
   "devDependencies": {
     "gh-pages": "^6.3.0"
   },
-  "homepage": "http://yourhomepage.com",
   "repository": {
     "type": "git",
-    "url": "http://github.com/yourusername/conversion-results-web.git"
+    "url": "https://github.com/j2launay/conversion-results-web.git"
   },
   "browserslist": {
     "production": [

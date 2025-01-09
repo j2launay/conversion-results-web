@@ -15,7 +15,7 @@ function App() {
     });
 
     useEffect(() => {
-        fetch('/results/index.json')
+        fetch(`${process.env.PUBLIC_URL}/results/index.json`)
             .then(response => response.json())
             .then(data => setDocuments(data))
             .catch(error => console.error('Error fetching document list:', error));
@@ -24,7 +24,7 @@ function App() {
     const handleDocumentChange = (event) => {
         const documentName = event.target.value;
         setSelectedDocument(documentName);
-        fetch(`/results/${documentName}.json`)
+        fetch(`${process.env.PUBLIC_URL}/results/${documentName}.json`)
             .then(response => response.json())
             .then(data => setMetrics(data))
             .catch(error => console.error('Error fetching document:', error));
@@ -32,7 +32,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Conversion Results For Amethyst</h1>
+            <h1>Conversion Results</h1>
             <div>
                 <label htmlFor="document-select">Select Document: </label>
                 <select id="document-select" onChange={handleDocumentChange}>
@@ -44,8 +44,9 @@ function App() {
             </div>
             {selectedDocument && (
                 <>
+                    <TextDisplay content={`Conversion results for ${selectedDocument}`} />
                     <div className="document-converted">
-                        <h2>{`Conversion results for ${selectedDocument}`}</h2>
+                        <h2>Converted Document</h2>
                         <pre>{metrics.document_converted}</pre>
                     </div>
                     <MetricsDisplay 
